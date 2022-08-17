@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 export const Storage = React.createContext();
 
 export const Context = (props) => {
-  const [dark,setDark] = useState(false)
-  const [cover,setCover] = useState('')
-  const [kidsarr,setKidsArr] = useState('')
-  const [kdpage,setKdpage] = useState(1)
-  const [rmpage,setRmpage] = useState(1)
-  const [romancearr,setRomanceArr] = useState('')
+  const [loadingt, setLoadingt] = useState(false);
+  const [loadingr, setLoadingr] = useState(false);
+  const [loadingk, setLoadingk] = useState(false);
+  const [dark, setDark] = useState(false);
+  const [cover, setCover] = useState("");
+  const [kidsarr, setKidsArr] = useState("");
+  const [kdpage, setKdpage] = useState(1);
+  const [rmpage, setRmpage] = useState(1);
+  const [romancearr, setRomanceArr] = useState("");
   const [thrillerarr, setThrillerArr] = useState("");
   const [thrpage, setThrpage] = useState(1);
   const [data, setData] = useState("");
@@ -23,24 +26,23 @@ export const Context = (props) => {
   const [isbn, setIsbn] = useState("");
   const detailpage = useNavigate();
 
-
-  const background =()=>{
-    setDark(!dark)
-  }
-  const searchpage =(val)=>{
-    setSearch(val)
-    detailpage('/library')
-  }
-  const nextkd =()=>{
-    setKdpage(kdpage+1)
-  }
-  const prevkd =()=>{
-    if(kdpage>1)
-    setKdpage(kdpage-1)
-    else return
-  }
-  useEffect(()=>{
-    const kids =async()=>{
+  const background = () => {
+    setDark(!dark);
+  };
+  const searchpage = (val) => {
+    setSearch(val);
+    detailpage("/library");
+  };
+  const nextkd = () => {
+    setKdpage(kdpage + 1);
+  };
+  const prevkd = () => {
+    if (kdpage > 1) setKdpage(kdpage - 1);
+    else return;
+  };
+  useEffect(() => {
+    const kids = async () => {
+      setLoadingk(true);
       const response = await axios.get("https://openlibrary.org/search.json", {
         params: {
           q: "child book",
@@ -50,20 +52,21 @@ export const Context = (props) => {
           page: kdpage,
         },
       });
-      setKidsArr(response.data.docs)
-    }
-    kids()
-  },[kdpage])
-  const prevrm =()=>{
-    if(rmpage>1)
-    setRmpage(rmpage-1)
-    else return
-  }
-  const nextrm =()=>{
-    setRmpage(rmpage+1)
-  }
-  useEffect(()=>{
-    const romance =async()=>{
+      setKidsArr(response.data.docs);
+      setLoadingk(false);
+    };
+    kids();
+  }, [kdpage]);
+  const prevrm = () => {
+    if (rmpage > 1) setRmpage(rmpage - 1);
+    else return;
+  };
+  const nextrm = () => {
+    setRmpage(rmpage + 1);
+  };
+  useEffect(() => {
+    const romance = async () => {
+      setLoadingr(true);
       const response = await axios.get("https://openlibrary.org/search.json", {
         params: {
           q: "love story",
@@ -73,10 +76,11 @@ export const Context = (props) => {
           page: rmpage,
         },
       });
-      setRomanceArr(response.data.docs)
-    }
-    romance()
-  },[rmpage])
+      setRomanceArr(response.data.docs);
+      setLoadingr(false);
+    };
+    romance();
+  }, [rmpage]);
   const prevthr = () => {
     if (thrpage > 1) setThrpage(thrpage - 1);
     else return;
@@ -86,6 +90,7 @@ export const Context = (props) => {
   };
   useEffect(() => {
     const thrillers = async () => {
+      setLoadingt(true);
       const response = await axios.get("https://openlibrary.org/search.json", {
         params: {
           q: "thriller",
@@ -96,6 +101,7 @@ export const Context = (props) => {
         },
       });
       setThrillerArr(response.data.docs);
+      setLoadingt(false);
     };
     thrillers();
   }, [thrpage]);
@@ -148,14 +154,14 @@ export const Context = (props) => {
   const searchHandler = () => {
     setSearch(book);
     setXyz(true);
-    detailpage('/library')
+    detailpage("/library");
     // setLoading(true)
   };
-  const showBookDetail = (val,cover) => {
+  const showBookDetail = (val, cover) => {
     detailpage("/bookdetail");
     console.log(val);
     setbookIsbn(val);
-    setCover(cover)
+    setCover(cover);
   };
   return (
     <Storage.Provider
@@ -173,16 +179,19 @@ export const Context = (props) => {
         thrillerarr: thrillerarr,
         nextthr: nextthr,
         prevthr: prevthr,
-        romancearr:romancearr,
-        nextrm:nextrm,
-        prevrm:prevrm,
-        kidsarr:kidsarr,
-        nextkd:nextkd,
-        prevkd:prevkd,
-        searchpage:searchpage,
-        cover:cover,
-        background:background,
-        dark:dark
+        romancearr: romancearr,
+        nextrm: nextrm,
+        prevrm: prevrm,
+        kidsarr: kidsarr,
+        nextkd: nextkd,
+        prevkd: prevkd,
+        searchpage: searchpage,
+        cover: cover,
+        background: background,
+        dark: dark,
+        loadingt:loadingt,
+        loadingr:loadingr,
+        loadingk:loadingk
       }}
     >
       {props.children}

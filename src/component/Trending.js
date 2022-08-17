@@ -10,7 +10,7 @@ function Trending() {
         <p onClick={()=>detail.searchpage('thriller')}>Thrillers</p>
         <div className={`${classes.images} ${detail.dark && classes.active}`}>
           <i class="fa-solid fa-arrow-left" onClick={detail.prevthr}></i>
-            {detail.thrillerarr.length > 0 && detail.thrillerarr.map((item)=><img
+            {detail.loadingt?<img src="loading.gif" alt=""/>: detail.thrillerarr.length > 0 && detail.thrillerarr.map((item)=><img
             src={`https://covers.openlibrary.org/b/id/${item.cover_i}-L.jpg`}
             alt=""
             onClick={() => detail.showBookDetail(item.isbn && item.isbn[0],item.cover_i)}
@@ -22,7 +22,7 @@ function Trending() {
         <p onClick={()=>detail.searchpage('love story')}>Romance</p>
         <div className={`${classes.images} ${detail.dark && classes.active}`}>
           <i class="fa-solid fa-arrow-left" onClick={detail.prevrm}></i>
-            {detail.romancearr.length > 0 && detail.romancearr.map((item)=><img
+            {detail.loadingr?<img src="loading.gif" alt=""/>: detail.romancearr.length > 0 && detail.romancearr.map((item)=><img
             src={`https://covers.openlibrary.org/b/id/${item.cover_i}-L.jpg`}
             alt=""
             onClick={() => detail.showBookDetail(item.isbn && item.isbn[0],item.cover_i)}
@@ -34,7 +34,7 @@ function Trending() {
         <p onClick={()=>detail.searchpage('child book')}>Kids</p>
         <div className={`${classes.images} ${detail.dark && classes.active}`}>
           <i class="fa-solid fa-arrow-left" onClick={detail.prevkd}></i>
-            {detail.kidsarr.length > 0 && detail.kidsarr.map((item)=><img
+            {detail.loadingk?<img src="loading.gif" alt=""/>: detail.kidsarr.length > 0 && detail.kidsarr.map((item)=><img
             src={`https://covers.openlibrary.org/b/id/${item.cover_i}-L.jpg`}
             alt=""
             onClick={() => detail.showBookDetail(item.isbn && item.isbn[0],item.cover_i)}
