@@ -37,3 +37,10 @@
     color: rgb(190, 53, 53);
     font-size: 1.4rem;
 }
+.searchLists.active{
+    background-color: rgb(41, 39, 39);
+}
+.searchLists .active{
+    background-image: linear-gradient(to right , rgba(238, 230, 230, 0),rgb(153, 148, 147,0.5));
+    color: rgb(235, 226, 226);
+}

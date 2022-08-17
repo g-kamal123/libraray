@@ -1,24 +1,4 @@
-.inpbtn{
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1%;
-    margin-left: 2.8rem;
-}
-.inpbtn input,button{
-    font-size: 1.2rem;
-    padding: 1%;
-    border: none;
-    border-bottom: 1px solid black;
-}
-.inpbtn button{
-    background-color: rgb(214, 94, 57);
-    border: none;
-    border-radius: 5px;
-    color: whitesmoke;
-}
-.inpbtn input:focus{
-    outline: none;
-}
+
 .loader{
     height: 90vh;
     width: 100vw;

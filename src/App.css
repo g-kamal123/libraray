@@ -3,4 +3,9 @@
 }
 body{
     margin: 0;
+    /* background-color: rgb(58, 60, 61); */
+    /* color: whitesmoke; */
+}
+.active{
+    background-color: black;
 }

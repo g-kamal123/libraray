@@ -1,8 +1,9 @@
-.bookdetail {
+.bookdetail{
   display: flex;
   gap: 2rem;
-  margin-top: 4%;
-  margin-left: 4%;
+  padding-top: 4%;
+  padding-left: 4%;
+  min-height: 84vh;
 }
 .bookdetail .imagecontent {
   display: flex;
@@ -12,6 +13,7 @@
   gap: 0.5rem;
   width: min-content;
   padding: 2%;
+  height: fit-content;
 }
 .bookdetail .imagecontent img {
   height: 20rem;
@@ -39,10 +41,15 @@
   font-family: Georgia, "Palatino Linotype", "Book Antiqua", Palatino, serif;
   color: #333;
   font-size: 2em;
+  /* color: white; */
 }
 .bookdetail .textcontent span {
   font-size: 1.3em;
   font-style: italic;
+}
+.bookdetail .textcontent p{
+  font-style: oblique;
+  color: #666;
 }
 .bookdetail .textcontent .publishinfo {
   display: flex;
@@ -52,4 +59,22 @@
 }
 .bookdetail hr {
   width: 100%;
+}
+.bookdetail.active{
+  background-color: rgb(41, 39, 39);
+}
+.imagecontent.active{
+  background-color: #333;
+}
+.imagecontent.active a{
+  background-color: rgb(88, 87, 87);
+  color: white;
+}
+.textcontent.active h1,.textcontent.active span,.textcontent.active .publishinfo,.textcontent.active p{
+  color: rgb(245, 225, 225);
+}
+@media(max-width:760px){
+  .publishinfo{
+    flex-direction: column;
+  }
 }

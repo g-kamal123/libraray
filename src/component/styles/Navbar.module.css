@@ -1,0 +1,63 @@
+.navbar{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background-color: rgb(231, 206, 199);
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    padding: 0 15vw;
+    gap: 1rem;
+}
+.navbar li img{
+    height: 15vh;
+    width: 15vw;
+    cursor: pointer;
+}
+.switch{
+    font-size: 1.7rem;
+    margin-left: 5vw;
+    cursor: pointer;
+}
+.inpbtn{
+    display: flex;
+    gap: 0.5rem;
+}
+.inpbtn input,button{
+    font-size: 1.4rem;
+    padding: 2%;
+    border: none;
+}
+.inpbtn button{
+    background-color: rgb(214, 94, 57);
+    border: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+.inpbtn input:focus{
+    outline: none;
+}
+.active{
+    background-color: rgb(153, 148, 147);
+}
+.inpbtn .active{
+    background-color: rgb(88, 87, 87);
+    /* color: black; */
+}
+@media(max-width:760px){
+    .navbar{
+        /* justify-content: flex-start; */
+        padding: 0 1vw;
+    }
+    .inpbtn input,button{
+        font-size: 1.2rem;
+    }
+    .inpbtn input{
+        max-width: 12rem;
+    }
+    .navbar li img{
+        height: 19vh;
+        width: 19vw;
+    }
+}
